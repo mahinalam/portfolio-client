@@ -2,9 +2,12 @@
 
 import React, { useState } from "react";
 import type { MenuProps } from "antd";
-import { Menu } from "antd";
+import { Button, Menu } from "antd";
 import Link from "next/link"; // Import Link from Next.js
 import Sider from "antd/es/layout/Sider";
+import { logout } from "@/src/app/redux/features/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/src/app/redux/store";
 
 // Helper function to create menu items
 type MenuItem = Required<MenuProps>["items"][number];
@@ -45,7 +48,13 @@ const items: MenuItem[] = [
 ];
 
 const Sidebar: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.auth.user?.email);
+  console.log("user from sidebar");
+  const handleLogout = () => {
+    // implement logot
+    dispatch(logout());
+  };
 
   return (
     <Sider
@@ -62,9 +71,9 @@ const Sidebar: React.FC = () => {
           alignItems: "center",
         }}
       >
-        <Link href="/">
-          <h1>Mahin</h1>
-        </Link>
+        <Button onClick={handleLogout} className="ml-10">
+          Logout
+        </Button>
       </div>
       <Menu
         theme="dark"

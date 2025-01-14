@@ -1,15 +1,16 @@
 "use client";
 
-import { useCreateSkillsMutation } from "@/app/redux/api/baseApi";
-import MAForm from "@/components/form/MAForm";
-import MAInput from "@/components/form/MAInput";
-import MASelect from "@/components/form/MASelect";
-import { Button } from "antd";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { useCreateBlogsMutation } from "../../redux/api/baseApi";
+import MAForm from "@/src/components/form/MAForm";
+import MAInput from "@/src/components/form/MAInput";
+import MASelect from "@/src/components/form/MASelect";
+import { Button } from "antd";
+import MATextArea from "@/src/components/form/MATextArea";
 
 const AddBlog = () => {
-  const [createSkills] = useCreateSkillsMutation();
+  const [createBlog] = useCreateBlogsMutation();
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -18,8 +19,8 @@ const AddBlog = () => {
 
   const categories = [
     { id: 1, name: "Web Development" },
-    { id: 1, name: "Portfolio" },
-    { id: 1, name: "Frontend" },
+    { id: 2, name: "Portfolio" },
+    { id: 3, name: "Frontend" },
   ];
 
   const categoriesOption = categories?.map((item: any) => ({
@@ -30,6 +31,10 @@ const AddBlog = () => {
     console.log("payload", data);
     if (Object.keys(data).length > 0) {
       try {
+        const res: any = await createBlog(data).unwrap();
+        if (res.success) {
+          toast.success("Blog created successfull.");
+        }
       } catch (err: any) {
         toast.error(err.messge);
       }
@@ -54,6 +59,8 @@ const AddBlog = () => {
           options={categoriesOption}
           mode="multiple"
         />
+        <MAInput type="text" name="image" label="ImageUrl" />
+        <MATextArea name="content" label="Content" />
         <Button
           htmlType="submit"
           size="large"

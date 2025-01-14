@@ -1,17 +1,11 @@
 "use client";
 
-import {
-  useCreateProjectMutation,
-  useCreateSkillsMutation,
-  useGetAllSkillsQuery,
-} from "@/app/redux/api/baseApi";
-import MAForm from "@/components/form/MAForm";
-import MAInput from "@/components/form/MAInput";
-import MASelect from "@/components/form/MASelect";
-import MATextArea from "@/components/form/MATextArea";
+import MAForm from "@/src/components/form/MAForm";
+import MASelect from "@/src/components/form/MASelect";
 import { Button } from "antd";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { useCreateSkillsMutation } from "../../redux/api/baseApi";
 
 const AddSkills = () => {
   const [createSkills] = useCreateSkillsMutation();
@@ -31,6 +25,12 @@ const AddSkills = () => {
     { id: 3, name: "express", image: "https://skillicons.dev/icons?i=express" },
     { id: 4, name: "nextjs", image: "https://skillicons.dev/icons?i=nextjs" },
     { id: 5, name: "mongo", image: "https://skillicons.dev/icons?i=mongo" },
+    { id: 5, name: "react", image: "https://skillicons.dev/icons?i=react" },
+    {
+      id: 5,
+      name: "typescript",
+      image: "https://skillicons.dev/icons?i=typescript",
+    },
     {
       id: 6,
       name: "postgres",

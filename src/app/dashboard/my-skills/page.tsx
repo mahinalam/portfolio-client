@@ -4,10 +4,7 @@
 import { Button, Table, Modal } from "antd";
 import { useState } from "react";
 import { toast } from "sonner";
-import {
-  useGetAllProjectsQuery,
-  useGetAllSkillsQuery,
-} from "@/app/redux/api/baseApi";
+import { useGetAllSkillsQuery } from "../../redux/api/baseApi";
 
 const MySkills = () => {
   const {

@@ -4,7 +4,7 @@
 import { Button, Table, Modal } from "antd";
 import { useState } from "react";
 import { toast } from "sonner";
-import { useGetAllProjectsQuery } from "@/app/redux/api/baseApi";
+import { useGetAllProjectsQuery } from "../../redux/api/baseApi";
 
 const AllRooms = () => {
   const {

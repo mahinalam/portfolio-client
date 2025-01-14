@@ -4,7 +4,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // Define a service using a base URL and expected endpoints
 export const baseApi = createApi({
   reducerPath: "baseApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/v1" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://mahin-portfolio-backend.vercel.app/api/v1",
+  }),
   endpoints: (builder) => ({
     getAllProjects: builder.query({
       query: () => `/projects`,
@@ -18,6 +20,13 @@ export const baseApi = createApi({
     createProject: builder.mutation({
       query: (payload) => ({
         url: `/projects`,
+        method: "POST",
+        body: payload,
+      }),
+    }),
+    createBlogs: builder.mutation({
+      query: (payload) => ({
+        url: `/blogs`,
         method: "POST",
         body: payload,
       }),
@@ -48,4 +57,5 @@ export const {
   useCreateSkillsMutation,
   useGetAllBlogsQuery,
   useLoginMutation,
+  useCreateBlogsMutation,
 } = baseApi;

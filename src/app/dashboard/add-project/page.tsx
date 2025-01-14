@@ -1,15 +1,12 @@
 "use client";
 
-import {
-  useCreateProjectMutation,
-  useGetAllProjectsQuery,
-} from "@/app/redux/api/baseApi";
-import MAForm from "@/components/form/MAForm";
-import MAInput from "@/components/form/MAInput";
-import MATextArea from "@/components/form/MATextArea";
 import { Button } from "antd";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { useCreateProjectMutation } from "../../redux/api/baseApi";
+import MAForm from "@/src/components/form/MAForm";
+import MAInput from "@/src/components/form/MAInput";
+import MATextArea from "@/src/components/form/MATextArea";
 
 const AddProject = () => {
   const [createProject] = useCreateProjectMutation();

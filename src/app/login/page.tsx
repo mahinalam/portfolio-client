@@ -1,11 +1,12 @@
 "use client";
-import MAForm from "@/components/form/MAForm";
-import MAInput from "@/components/form/MAInput";
+
 import { Button, Divider } from "antd";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import { useLoginMutation } from "../redux/api/baseApi";
 import { useRouter } from "next/navigation";
+import MAForm from "@/src/components/form/MAForm";
+import MAInput from "@/src/components/form/MAInput";
 
 const Login = () => {
   const [login] = useLoginMutation();

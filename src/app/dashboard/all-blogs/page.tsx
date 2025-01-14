@@ -3,8 +3,7 @@
 
 import { Button, Table, Modal } from "antd";
 import { useState } from "react";
-import { toast } from "sonner";
-import { useGetAllBlogsQuery } from "@/app/redux/api/baseApi";
+import { useGetAllBlogsQuery } from "../../redux/api/baseApi";
 
 const AllBlogs = () => {
   const {
